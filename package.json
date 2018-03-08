@@ -1,0 +1,29 @@
+{
+  "name": "angularjs-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "directories": {
+    "src": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "angular": "1.6.9",
+    "angular-route": "1.6.9",
+    "express": "~4.16.2",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "~1.4.3",
+    "express-session": "~1.15.6",
+    "connect-mongo": "~2.0.1"
+  },
+  "keywords": [
+    "AngularJS",
+    "test-project",
+    "demo-app"
+  ],
+  "author": "Artemon-line",
+  "license": "ISC"
+}
