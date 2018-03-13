@@ -6,8 +6,6 @@ var path = require('path');
 var port = 3000;
 
 
-
-
 app.use(express.static(path.join(__dirname, '../app')));
 app.use(express.static(path.join(__dirname, '../node_modules')));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,4 +19,4 @@ app.use(session({
 
 require('./routes/routes')(app);
 
-app.listen(port, () => console.log('Server runnig on %s', port));
+app.listen(port, () => console.log('Server runnig on localhost:%s', port));

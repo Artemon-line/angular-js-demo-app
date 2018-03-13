@@ -1,7 +1,7 @@
 {
-  "name": "angularjs-app",
+  "name": "angular-js-demo-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Notes app - example of usage AngularJs",
   "main": "/server/server.js",
   "directories": {
     "src": "src",
@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "nodemon server/server.js",
-    "test": "test"
+    "test": "node ./node_modules/karma/bin/karma start test/unit/karma.conf.js --single-run",
+    "e2e": "node ./node_modules/protractor/bin/protractor ./test/e2e/protractor.conf.js"
   },
   "dependencies": {
     "angular": "1.6.9",
@@ -20,7 +21,12 @@
     "express-session": "~1.15.6"
   },
   "devDependencies": {
-    "nodemon": "^1.17.1"
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "nodemon": "^1.17.1",
+    "protractor": "^5.3.0"
   },
   "keywords": [
     "AngularJS",

@@ -3,10 +3,7 @@ var users = [
     { user: { username: 'admin', password: 'admin1' } }
 ]
 
-module.exports = function (app) {
-    app.get('/users', function (req, res) {
-        res.send(users);
-    });
+module.exports = function (app) {   
 
     app.get('/check-user', function (req, res) {
         res.send({ success: users.filter(u => req.query.name == u.user.userName).length > 0 });
@@ -17,7 +14,7 @@ module.exports = function (app) {
             res.end();
         }
         users.push({ user: req.body.user });
-        res.send(users);
+        res.send({success: true});
     })
 
     app.post('/login', function (req, res) {

@@ -11,8 +11,6 @@
                                     {{sc.activeSection}}</a>
                             </h3>
                         </div>
-
-
                         <div class="panel-body">
                             <div class="form-group">
                                 <textarea style="min-width:100%;min-height:200px" class="form-control" ng-model="nc.text"></textarea>
@@ -45,8 +43,10 @@
                     </div>
                 </div>
                 <ul class="list-group" ng-repeat="section in sc.readSections()">
-                    <li href="#" class="list-group-item" ng-click="sc.showSection(section)" ng-class="{active: section.title==sc.activeSection}">
-                        {{section.title}}
+                    <li href="#" class="list-group-item d-flex justify-content-between align-items-center" ng-click="sc.showSection(section)"
+                        ng-class="{active: section.title==sc.activeSection}">
+                        <div>{{section.title}}</div>
+                        <span class="badge badge-primary badge-pill">{{nc.getNotes(section.title).length}}</span>
                     </li>
                 </ul>
             </div>

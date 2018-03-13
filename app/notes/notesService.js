@@ -16,7 +16,6 @@
                 return notes;
             };
 
-
             refresh();
 
             var addData = function (dataToAdd) {
@@ -30,9 +29,7 @@
                     .then(function (res) {
                         refresh();
                     });
-
             }
-
 
             return {
                 getData: getData,

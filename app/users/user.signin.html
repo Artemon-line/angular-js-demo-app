@@ -1,0 +1,32 @@
+<div ng-controller="UserSignInController as usic">
+    <div id="greeting" class="align-content-around navbar navbar-toggler" role="alert" ng-show="usic.loggedIn">Welcome back, {{usic.username}}!</div>
+    <form ng-show="!usic.loggedIn" ng-submit="usic.signIn()">
+        <div class="form-row align-items-center">
+
+            <div class="col-auto">
+                <label class="sr-only" for="inlineFormInput">Name</label>
+                <input ng-model="usic.username" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="User name">
+            </div>
+            <div class="col-auto">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                <div class="input-group mb-2">
+                    <input ng-model="usic.password" type="password" class="form-control" id="inlineFormInputGroup" placeholder="Password">
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="form-check mb-2">
+                    <input ng-model="usic.rememberMe" class="form-check-input" type="checkbox" id="autoSizingCheck">
+                    <label class="form-check-label" for="autoSizingCheck">
+                        Remember me
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success mb-2">Sign in</button>
+                <a class="btn btn-primary mb-2" ng-href="#/register">Register</a>
+            </div>
+        </div>
+        <span ng-show="!usic.loggedIn">{{usic.message}}</span>
+    </form>
+</div>
