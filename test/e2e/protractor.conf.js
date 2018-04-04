@@ -2,6 +2,8 @@ const child_process = require('child_process');
 const server = child_process.spawn('node', ['server/server.js']);
 server.stdout.pipe(process.stdout);
 
+let SpecReporter = require('jasmine-spec-reporter').SpecReporter;
+
 exports.config = {
     directConnect: true,
     specs: ['./specs/*.spec.js'],
@@ -18,21 +20,15 @@ exports.config = {
 
     baseUrl: 'http://localhost:3000/',
 
-    // framework: 'custom',
-    // frameworkPath: require.resolve('protractor-cucumber-framework'),
-
-    onCleanUp: function () {
-        // nothing to do here
-    },
-    onComplete: function () {
-        // nothing to do here
-    },
-    beforeLaunch: function () {
-        // nothing to do here
-    },
-    afterLaunch: function () {
-        // nothing to do here
+    onPrepare: function () {
+        jasmine.getEnv().addReporter(new SpecReporter({
+            displayFailuresSummary: true,
+            displayFailuredSpec: true,
+            displaySuiteNumber: true,
+            displaySpecDuration: true
+        }));
     }
+
 };
 
 process.on('exit', () => server.kill());

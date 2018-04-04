@@ -25,7 +25,7 @@
             link: function (scope, elem, attr, ngModel) {
                 ngModel.$asyncValidators.userExist =
                     function (modelValue, viewValue) {
-                        var value = modelValue || viewValue;                        
+                        var value = modelValue || viewValue;
                         if (usersService.checkUser(value)) {
                             return $q.resolve();     // to mark as valid or
                         } else {

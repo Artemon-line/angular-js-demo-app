@@ -27,7 +27,7 @@ describe('iteractions with categories', function () {
         categoriesPage.filterActiveSection();
         expect(categoriesPage.getURL()).toContain(catNameSelect);
 
-        expect(notesPage.getNotesFromActiveView())
+        expect(notesPage.getNotes())
             .toEqual([
                 `${catNameSelect} 0`,
                 `${catNameSelect} 1`,

@@ -1,6 +1,7 @@
 var express = require('express');
 var session = require('express-session');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var opn = require('opn');
 var app = express();
 var path = require('path');
 var port = 3000;
@@ -19,4 +20,7 @@ app.use(session({
 
 require('./routes/routes')(app);
 
-app.listen(port, () => console.log('Server runnig on localhost:%s', port));
+app.listen(port, () => {
+    var address = `http://localhost:${port}`;
+    console.log(`Server runnig on ${address}`);
+});

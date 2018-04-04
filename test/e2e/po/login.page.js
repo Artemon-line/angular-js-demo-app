@@ -9,9 +9,9 @@ var LoginPage = function () {
     }
 
     var regForm = {
-        username: element(by.model('ufc.user.username')),
-        password: element(by.model('ufc.user.password')),
-        repeatPassword: element(by.model('ufc.user.repeatPassword')),
+        username: element(by.model('uc.user.username')),
+        password: element(by.model('uc.user.password')),
+        repeatPassword: element(by.model('uc.user.repeatPassword')),
         submitButton: element(by.buttonText('Submit'))
     }
 

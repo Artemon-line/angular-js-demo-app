@@ -16,31 +16,43 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/#">
                     <img src="/assets/brand/notes.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Notes tutorial app
-                </a>            
+                </a>
             </div>
             <user-signin></user-signin>
         </div>
     </nav>
-   
+
 
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4">Keep your notes in order</h1>
-            <p class="lead">This is a simple demo application created with AngularJs framework.</p>
+            <p class="lead">Simple application created with AngularJs framework.</p>
             <hr class="my-4">
             <p>A simple application to keep your own notes in order.</p>
         </div>
     </div>
-    <div class="container" ng-view></div>
+    <div style="background:transparent !important" class="jumbotron py-1">
+        <div class="container" ng-view></div>
     </div>
+    <footer class="blockquote-footer text-center">
+
+        <p>Simple example of angular-js based web app.</p>
+        <p>Powered by: backend part:
+            <a href="https://nodejs.org/en/">Node Js</a>, fron-end part
+            <a href="https://angularjs.org/">Angular Js</a>, styles form
+            <a href="https://getbootstrap.com/">Bootstrap</a>.
+        </p>
+    </footer>
 
     <script src="./angular/angular.js"></script>
     <script src="./angular-route/angular-route.js"></script>
     <script src="./routes.js"></script>
     <script src="./users/usersService.js"></script>
     <script src="./users/userSignInController.js"></script>
-    <script src="./users/userFormController.js"></script>
+    <script src="./users/usersController.js"></script>
     <script src="./js/directives.js"></script>
+    <script src="./js/events.js"></script>
+    <script src="./js/notifyingService.js"></script>
     <script src="./notes/notesService.js"></script>
     <script src="./notes/notesController.js"></script>
     <script src="./sections/sectionsController.js"></script>

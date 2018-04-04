@@ -2,8 +2,7 @@ var NotesPage = function () {
     var notes = {
         buttonPost: element(by.buttonText('Post note')),
         input: element(by.model('nc.text')),
-        list: element.all(by.repeater('note in nc.getNotes(sc.activeSection)')),
-        activeViewList: element.all(by.repeater('note in nc.getNotes(vc.activeSection)'))
+        list: element.all(by.repeater('note in nc.getNotes(sc.activeSection)'))
     };
 
     //Notes
@@ -14,12 +13,6 @@ var NotesPage = function () {
     }
     this.getNotes = function () {
         return notes.list.map(x => {
-            return x.$('li').getText();
-        })
-    }
-
-    this.getNotesFromActiveView = function () {
-        return notes.activeViewList.map(x => {
             return x.$('li').getText();
         })
     }

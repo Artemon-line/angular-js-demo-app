@@ -1,8 +1,14 @@
 <div ng-controller="UserSignInController as usic">
-    <div id="greeting" class="align-content-around navbar navbar-toggler" role="alert" ng-show="usic.loggedIn">Welcome back, {{usic.username}}!</div>
+    <div class="align-content-around navbar navbar-toggler" role="alert" ng-show="usic.loggedIn">
+        <div class="form-row align-items-center">
+            <div id="greeting" class="col-auto">Welcome back, {{usic.loggedIn}}! </div>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-primary mb-2" ng-click="usic.logout(usic.loggedIn)">Logout</a>
+        </div>
+    </div>
     <form ng-show="!usic.loggedIn" ng-submit="usic.signIn()">
         <div class="form-row align-items-center">
-
             <div class="col-auto">
                 <label class="sr-only" for="inlineFormInput">Name</label>
                 <input ng-model="usic.username" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="User name">

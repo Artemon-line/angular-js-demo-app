@@ -1,30 +1,55 @@
 
 var users = [
-    { user: { username: 'admin', password: 'admin1' } }
+    { username: 'admin', password: '1' }
 ]
 
-module.exports = function (app) {   
+module.exports = function (app) {
 
-    app.get('/check-user', function (req, res) {
-        res.send({ success: users.filter(u => req.query.name == u.user.userName).length > 0 });
+    //check
+    app.get('/users/:login', (req, res) => {
+        res.send({
+            success: users.filter(u => req.params.login == u.username).length > 0,
+        });
     });
 
-    app.post('/users', function (req, res) {
+    //add user
+    app.put('/users', (req, res) => {
         if (req.body.length == 0) {
             res.end();
         }
-        users.push({ user: req.body.user });
-        res.send({success: true});
+        users.push({ username: req.body.username, password: req.body.password });
+        res.send({ success: true });
     })
 
-    app.post('/login', function (req, res) {
+    app.get('/users', (req, res) => {
         res.send({
-            success:
-                users
-                    .filter(u =>
-                        u.user.username == req.body.login
-                        && u.user.password == req.body.password
-                    ).length > 0
+            success: req.session.user != undefined,
+            login: req.session.user
+        })
+    })
+
+    //login
+    app.post('/users', (req, res) => {
+
+        var isExist = users
+            .filter(u =>
+                u.username == req.body.login
+                && u.password == req.body.password
+            ).length > 0;
+        if (isExist) {
+            req.session.user = req.body.login
+        };
+        res.send({
+            success: isExist
+        })
+    })
+
+    app.delete('/users/:login', (req, res) => {
+        var result = req.session.user == req.params.login;
+        if (result) req.session.user = undefined;
+
+        res.send({
+            success: result
         })
     })
 }

@@ -19,22 +19,35 @@
             refresh();
 
             var addData = function (dataToAdd) {
-                return $http.post('/notes', dataToAdd)
+                return $http.post('/notes',
+                    {
+                        user: dataToAdd.user,
+                        text: dataToAdd.text,
+                        section: dataToAdd.section
+                    })
                     .then(function (res) {
                         refresh();
                     });
             }
-            var deleteData = function (datatoDelete) {
-                return $http.delete('/notes', { params: { id: datatoDelete } })
+            var deleteData = function (data) {
+                return $http.delete('/notes',
+                    {
+                        params: {
+                            text: data.text,
+                            section: data.section
+                        }
+                    })
                     .then(function (res) {
                         refresh();
                     });
             }
 
+
             return {
-                getData: getData,
                 addData: addData,
-                deleteData: deleteData
+                deleteData: deleteData,
+                getData: getData,
+                refresh: refresh
             }
         }]);
 })();

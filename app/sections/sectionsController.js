@@ -19,14 +19,18 @@
 
         this.addSection = function () {
             if (this.newSection.length == 0) return;
-
+            var ifExist = false;
             this.sections.forEach(s => {
                 if (s.title === this.newSection) {
-                    this.newSection = '';
-                    alert('Duplicated nemes')
-                    return
+
+                    ifExist = true;
                 };
             });
+            if (ifExist) {
+                this.newSection = '';
+                alert('Duplicated nemes');
+                return;
+            }
 
             sectionService.putData({ title: this.newSection });
             this.activeSection = this.newSection;

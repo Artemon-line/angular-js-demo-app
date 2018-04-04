@@ -6,17 +6,17 @@
 
             $routeProvider.
                 when('/', {
-                    templateUrl: './notes/notes.html'
+                    templateUrl: './notes/notes.template.html'
                 })
                 .when('/register', {
                     templateUrl: './users/user.form.html',
-                    controller: 'UserFormController as ufc',
+                    controller: 'UsersController as uc',
                     resolve: { usersService: 'UsersService' }
                 })
 
                 .when('/section/:name', {
                     templateUrl: './sections/sections.template.html',
-                    controller: 'ViewSectionController'
+                    controller: 'ViewSectionController as sc'
                 })
                 .otherwise({ redirectTo: '/' })
         });
