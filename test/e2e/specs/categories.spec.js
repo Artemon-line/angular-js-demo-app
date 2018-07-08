@@ -16,16 +16,14 @@ describe('iteractions with categories', function () {
     it('should navigate by categories', function () {
         var catNameSelect = 'TestCatSelect';
         categoriesPage.addCategory(catNameSelect);
-
-        categoriesPage.selectCategory('Work');
         categoriesPage.selectCategory(catNameSelect);
 
         for (let index = 0; index < 3; index++) {
             notesPage.addNote(`${catNameSelect} ${index}`);
         }
 
-        categoriesPage.filterActiveSection();
-        expect(categoriesPage.getURL()).toContain(catNameSelect);
+        //categoriesPage.filterActiveSection();
+        //expect(categoriesPage.getURL()).toContain(catNameSelect);
 
         expect(notesPage.getNotes())
             .toEqual([

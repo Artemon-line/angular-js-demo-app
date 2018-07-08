@@ -1,46 +1,17 @@
-<div ng-controller="SectionsController as sc">
-    <div ng-controller="NotesController as nc">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Add your note to
-                            <a ng-href="#/section/{{sc.activeSection}}">
-                                {{sc.activeSection}}</a>
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <textarea style="min-width:100%;min-height:200px" class="form-control" ng-model="nc.text"></textarea>
-                        </div>
-                        <div ng-controller="UserSignInController as usic">                                
-                            <button ng-click="nc.addNote(sc.activeSection, usic.loggedIn)" class="btn btn-primary">Post note</button>
-                        </div>
-                    </div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Notes in {{sc.activeSection}}</h3>
+            <div id="cat-list" class="list-group" ng-repeat="note in nc.getNotes(sc.activeSection)">
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading">{{note.title}}</h4>
+                    <p class="list-group-item-text">{{note.text}}</p>
+                    <span class="pull-right">
+                        <button class="btn btn-xs btn-info" ng-click="nc.edit(note)" data-target="#editModal">Edit</button>
+                        <button class="btn btn-xs btn-warning" ng-click="nc.remove(note.id)">Delete</button>
+                    </span>
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <div>
-                    <div class="input-group" style="padding-bottom:20px">
-                        <input type="text" class="form-control" placeholder="New section name" ng-model="sc.newSection">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" ng-click="sc.addSection()">Add</button>
-                        </span>
-                    </div>
-                </div>
-                <ul class="list-group" ng-repeat="section in sc.readSections()">
-                    <li href="#" class="list-group-item d-flex justify-content-between align-items-center" ng-click="sc.showSection(section)"
-                        ng-class="{active: section.title==sc.activeSection}">
-                        <div>{{section.title}}</div>
-                        <span class="badge badge-primary badge-pill">{{nc.getNotes(section.title).length}}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="jumbotron .jumbotron-fluid" ng-show="nc.getNotes(sc.activeSection).length > 0">
-            <ng-include src="'../sections/sections.template.html'"></ng-include>
         </div>
     </div>
 </div>

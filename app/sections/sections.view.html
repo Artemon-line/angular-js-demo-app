@@ -1,0 +1,15 @@
+<div>
+    <div class="input-group" style="padding-bottom:20px">
+        <input type="text" class="form-control" placeholder="New section name" ng-model="sc.newSection">
+        <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="sc.addSection()">Add</button>
+        </span>
+    </div>
+</div>
+<ul class="list-group" ng-repeat="section in sc.readSections()">
+    <li href="#" class="list-group-item d-flex justify-content-between align-items-center" ng-click="sc.showSection(section)"
+        ng-class="{active: section.title==sc.activeSection}">
+        <div>{{section.title}}</div>
+        <span class="badge badge-primary badge-pill">{{nc.getNotes(section.title).length}}</span>
+    </li>
+</ul>

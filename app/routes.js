@@ -6,7 +6,7 @@
 
             $routeProvider.
                 when('/', {
-                    templateUrl: './notes/notes.template.html'
+                    templateUrl: './notes/notes.view.html'
                 })
                 .when('/register', {
                     templateUrl: './users/user.form.html',
@@ -15,7 +15,7 @@
                 })
 
                 .when('/section/:name', {
-                    templateUrl: './sections/sections.template.html',
+                    templateUrl: './notes/notes.view.html',
                     controller: 'ViewSectionController as sc'
                 })
                 .otherwise({ redirectTo: '/' })

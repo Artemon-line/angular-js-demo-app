@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            Add your note to
+            <a ng-href="#/section/{{sc.activeSection}}">
+                {{sc.activeSection}}</a>
+        </h3>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            {{nc.updtext}}
+            <textarea style="min-width:100%;min-height:200px" class="form-control" ng-model="nc.text"></textarea>
+        </div>
+        <div ng-controller="UserSignInController as usic">
+            <button ng-click="nc.addNote(sc.activeSection, usic.loggedIn)" class="btn btn-primary">Post note</button>
+        </div>
+    </div>
+</div>

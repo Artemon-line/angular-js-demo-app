@@ -1,12 +1,15 @@
-(function () {
-    'use strict';
+(function() {
+  "use strict";
 
-    var UsersController = function (usersService) {
-        
-        this.submit = function () { usersService.signUp(this.user); }
-    }
+  var UsersController = function($window, usersService) {
+    this.submit = function() {
+      console.log("submit");
+      usersService.signUp(this.user);
+      $window.location.href = "/";
+    };
+  };
 
-    UsersController.$inject = ['UsersService'];
+  UsersController.$inject = ["$window", "UsersService"];
 
-    angular.module('notesApp').controller("UsersController", UsersController);
+  angular.module("notesApp").controller("UsersController", UsersController);
 })();

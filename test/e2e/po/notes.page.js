@@ -12,17 +12,17 @@ var NotesPage = function () {
         });
     }
     this.getNotes = function () {
-        return notes.list.map(x => {
-            return x.$('li').getText();
+        return notes.list.map((x, i) => {
+            return x.$('div p').getText();
         })
     }
 
     this.deleteNote = function (noteText) {
         notes.list.filter((elem, index) => {
-            return elem.$('li').getText().then((text) =>
-                text === noteText
+            return elem.$('div p').getText().then((text) =>
+                text == noteText
             );
-        }).first().$('button').click();
+        }).first().$('div .btn-warning').click();
     }
 }
 
