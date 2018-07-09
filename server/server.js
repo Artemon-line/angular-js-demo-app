@@ -20,7 +20,7 @@ app.use(session({
 
 require('./routes/routes')(app);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     var address = `http://localhost:${port}`;
     console.log(`Server runnig on ${address}`);
 });
