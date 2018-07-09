@@ -18,7 +18,7 @@ exports.config = {
 
     allScriptsTimeout: 8000,
 
-    baseUrl: 'http://localhost:3000/',
+    baseUrl: 'http://localhost:4200/',
 
     onPrepare: function () {
         jasmine.getEnv().addReporter(new SpecReporter({
