@@ -18,6 +18,6 @@
                     templateUrl: './notes/notes.view.html',
                     controller: 'ViewSectionController as sc'
                 })
-                .otherwise({ redirectTo: '/' })
+                .otherwise({ redirectTo: '/index.html' })
         });
 })();
