@@ -3,18 +3,25 @@ dist: trusty
 addons:
   apt:
     sources:
-      - google-chrome
+    - google-chrome
     packages:
-      - google-chrome-stable
+    - google-chrome-stable
 language: node_js
 node_js:
-  - 6
-  - 7
+- 6
+- 7
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 install:
-  - npm install
-  - npm run webdriver-update
+- npm install
+- npm run webdriver-update
 script:
-  - npm run e2e
+- npm run e2e
+deploy:
+  provider: heroku
+  api_key:
+    secure: /+MIOURfAyUZtrQ212c9QFIz4GpgR+2lEm9B2q+0lSlBr5fvsyHz8AP21cT0mhVQbIoqlVW9JhbRa/oXpn68+1ajEpzlvXgbZMX3sD67Ftx+4IGEb5Nl4o0cQsItHb++haSyBZkScdEUFoO3+ESptjXpt/JbxHVA0JB3e+xzUdUtj+avV9jWG2qhK4nB0fK1mwm5pmpPq9Kt/Q5ovIEBYmWo4cYwQC8Iu4JFNlyB7p6yFdJUTv3mjrc2E8pJGHZ0Lf6p+fhOu3T946HcSRe6f6Hsda/qhBmkp01br1locNE4R41jjGAURpEOpOift7k7vbAmZOyO14E2u7kAhgHYf2NVOI1BPm+EWAVRl9MeIRESWiVBrKVYPOO7LbNq5L2OBOsT+pJohOqR5XMvlX9je6NrbDlS3pbfaKcReNOK1VFJE2KHvOsdbkLmWFt21+TAMohXevaarahbKLQP6kWaZCLVq8vPONu7nDLpQl9vUlT8RqQ2hQ09AAg3Ld+P4fClS3IhEgYvxj7HLF+bcdPWyUzzRnh8p9tE5VHlrezcsyLMrGAqbzbyWLLrNuCN4apQqCe1QKuAmXw/o=
+  app: angular-js-demo-app
+  on:
+    repo: Artemon-line/angular-js-demo-app
