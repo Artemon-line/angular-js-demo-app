@@ -1,6 +1,9 @@
 {
   "name": "angular-js-demo-app",
   "version": "1.0.0",
+  "engines": {
+    "npm": "5.7.x"
+  },
   "description": "Notes app - example of usage AngularJs",
   "main": "/server/server.js",
   "directories": {
