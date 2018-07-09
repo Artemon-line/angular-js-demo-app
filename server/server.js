@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var opn = require('opn');
 var app = express();
 var path = require('path');
-var port = 4200;
+var port = process.env.PORT || 4200;
 
 
 app.use(express.static(path.join(__dirname, '../app')));
@@ -20,7 +20,7 @@ app.use(session({
 
 require('./routes/routes')(app);
 
-app.listen(process.env.PORT || port, () => {
+app.listen(port, () => {
     var address = `http://localhost:${port}`;
     console.log(`Server runnig on ${address}`);
 });
