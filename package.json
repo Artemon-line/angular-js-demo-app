@@ -26,7 +26,9 @@
     "express": "~4.16.2",
     "express-session": "~1.15.6",
     "jquery": "^3.3.1",
-    "popper.js": "1.14.3"
+    "popper.js": "1.14.3",
+    "opn": "^5.3.0",
+    "sha1": "^1.1.1"
   },
   "devDependencies": {
     "jasmine-core": "^3.1.0",
@@ -35,9 +37,7 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.1",
     "nodemon": "^1.17.5",
-    "opn": "^5.3.0",
-    "protractor": "^5.3.2",
-    "sha1": "^1.1.1"
+    "protractor": "^5.3.2"
   },
   "keywords": [
     "AngularJS",
