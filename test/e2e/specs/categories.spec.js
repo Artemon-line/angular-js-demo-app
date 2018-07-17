@@ -22,8 +22,8 @@ describe('iteractions with categories', function () {
             notesPage.addNote(`${catNameSelect} ${index}`);
         }
 
-        //categoriesPage.filterActiveSection();
-        //expect(categoriesPage.getURL()).toContain(catNameSelect);
+        categoriesPage.filterActiveSection();
+        expect(categoriesPage.getURL()).toContain(catNameSelect);
 
         expect(notesPage.getNotes())
             .toEqual([

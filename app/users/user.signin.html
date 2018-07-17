@@ -4,7 +4,7 @@
             <div id="greeting" class="col-auto">Welcome back, {{usic.loggedIn}}! </div>
         </div>
         <div class="col-auto">
-            <a class="btn btn-primary mb-2" ng-click="usic.logout(usic.loggedIn)">Logout</a>
+            <button type="button" class="btn btn-primary" ng-click="usic.logout(usic.loggedIn)">Logout</button>
         </div>
     </div>
     <form ng-show="!usic.loggedIn" ng-submit="usic.signIn()">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="col-auto">
-                <button type="submit" class="btn btn-success mb-2">Sign in</button>
+                <button type="submit" class="btn btn-success mb-2">Login</button>
                 <a class="btn btn-primary mb-2" ng-href="#/register">Register</a>
             </div>
         </div>

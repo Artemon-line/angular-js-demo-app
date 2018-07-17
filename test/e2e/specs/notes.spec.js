@@ -32,8 +32,4 @@ describe('iteractions with notes list', function () {
             .not.toContain(`${noteContent} 1`);
 
     });
-
-   
-
-    //it('shpuld be able to login', () => { })
 });

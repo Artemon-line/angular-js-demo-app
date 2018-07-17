@@ -1,21 +1,16 @@
-var sha1 = require("sha1");
-var id = 0;
-var notes = new Array({
-  id: id++,
-  user: "admin",
-  section: "Work",
-  text: "test"
-});
+const utils = require("../utils.js");
+const Note = require("../model/note");
 
-function getUserUUID(req) {
-  return sha1(req.get("User-Agent") + req.connection.remoteAddress);
-}
+var id = 0;
+var notes = [];
+
+notes.push(new Note(id++, "admin", "Work", "test"));
 
 module.exports = function(app) {
   //Read
   app.get("/notes", function(req, res) {
     var result = notes.filter(
-      x => x.user === (req.session.user || getUserUUID(req))
+      x => x.user === (req.session.user || utils.getUserUUID(req))
     );
     res.send(result);
   });
@@ -23,30 +18,27 @@ module.exports = function(app) {
   // Update
   app.post("/notes", function(req, res) {
     var noteToUpdate = notes.find(x => x.id == req.body.id);
-    console.log("!!!!!!!!! " + noteToUpdate);
     if (noteToUpdate == undefined) res.end();
     else {
       var index = notes.indexOf(noteToUpdate);
-      console.log("!!!!!!!!! " + index);
       noteToUpdate.text = req.body.text;
       noteToUpdate.section = req.body.section;
+      noteToUpdate.time = new Date();
       notes[index] = noteToUpdate;
-      console.log(notes[index]);
-
-      res.end();
+      res.send({ success: notes.indexOf(noteToUpdate) > -1 });
     }
   });
 
   //Create
   app.put("/notes", function(req, res) {
-    var temnpo = req.session.user || getUserUUID(req);
-    notes.push({
-      id: id++,
-      user: req.session.user || getUserUUID(req),
-      section: req.body.section,
-      text: req.body.text
-    });
-    res.end();
+    var newNote = new Note(
+      id++,
+      req.session.user || utils.getUserUUID(req),
+      req.body.section,
+      req.body.text
+    );
+    notes.push(newNote);
+    res.send({ success: notes.indexOf(newNote) > -1 });
   });
 
   //Delete

@@ -15,8 +15,6 @@
         return notes;
       };
 
-      refresh();
-
       var addData = function(dataToAdd) {
         return $http
           .put("/notes", {

@@ -1,38 +1,36 @@
 (function() {
   "use strict";
   var NotesController = function(notesService, notifyingService) {
-    var nCtrl = this;
-
-    nCtrl.text = "";
-    nCtrl.upd = { id: 0, text: "" };
-    nCtrl.getNotes = function(activeSection) {
+    this.text = "";
+    this.upd = { id: 0, text: "" };
+    this.getNotes = function(activeSection) {
       var result = notesService
         .getData()
         .filter(n => n.section === activeSection);
       return result;
     };
-    nCtrl.addNote = function(activeSection, userName) {
-      if (nCtrl.text != "") {
+    this.addNote = function(activeSection, userName) {
+      if (this.text != "") {
         var note = {
           user: userName ? userName : undefined,
-          text: nCtrl.text,
+          text: this.text,
           section: activeSection
         };
         notesService.addData(note);
-        nCtrl.text = "";
+        this.text = "";
       }
     };
 
-    nCtrl.remove = function(id) {
+    this.remove = function(id) {
       notesService.deleteData(id);
     };
 
-    nCtrl.edit = function(id, text) {
+    this.edit = function(id, text) {
       $("#editModal").modal();
-      nCtrl.upd = { id, text };
+      this.upd = { id, text };
     };
 
-    nCtrl.updateNote = function(noteupd, option) {
+    this.updateNote = function(noteupd, option) {
       notesService
         .updateData(noteupd.id, option, noteupd.text)
         .then(ref => {
@@ -44,10 +42,10 @@
     };
 
     // notifyingService.subscribe(events.ON_LOGIN, notesService.refresh());
-    notifyingService.subscribe(nCtrl, events.ON_LOGIN, () => {
+    notifyingService.subscribe(this, events.ON_LOGIN, () => {
       notesService.refresh();
     });
-    notifyingService.subscribe(nCtrl, events.ON_LOGOUT, () => {
+    notifyingService.subscribe(this, events.ON_LOGOUT, () => {
       notesService.refresh();
     });
   };

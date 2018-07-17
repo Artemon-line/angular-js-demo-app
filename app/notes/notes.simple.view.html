@@ -1,0 +1,8 @@
+<div ng-controller="SectionsController as sc">
+    <div ng-controller="NotesController as nc">
+        <div class="jumbotron jumbotron-fluid" ng-show="nc.getNotes(sc.activeSection).length > 0">
+            <ng-include src="'../notes/notes.template.html'"></ng-include>
+        </div>
+        <ng-include src="'../notes/notes.edit.html'"></ng-include>
+    </div>
+</div>
