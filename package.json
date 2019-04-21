@@ -2,7 +2,7 @@
   "name": "angular-js-demo-app",
   "version": "1.0.0",
   "engines": {
-    "npm": "5.7.x"
+    "npm": "6.8.x"
   },
   "description": "Notes app - example of usage AngularJs",
   "main": "/server/server.js",
@@ -37,7 +37,8 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.1",
     "nodemon": "^1.17.5",
-    "protractor": "^6.0.0"
+    "protractor": "^6.0.0",
+    "webdriver-manager": "^13.0.0"
   },
   "keywords": [
     "AngularJS",
